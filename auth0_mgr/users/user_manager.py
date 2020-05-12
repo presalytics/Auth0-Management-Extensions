@@ -1,3 +1,4 @@
+import logging
 from auth0_mgr.models.user import Auth0User
 from auth0_mgr.tokens import AdminTokenMgr
 
@@ -28,5 +29,23 @@ class UserManager(AdminTokenMgr):
             for key in self.IDENTIFIER_FIELDS:
                 dct.pop(key, None)
         self.auth0.users.update(user_id, dct)
-        
 
+    
+    def assign_user_data_via_email(user_instance, email, override_existing=False):
+        user_data = self.get_user_by_email(email)
+        for key, val in user_data.items():
+            if key == "user_metadata" or key == "app_metadata":
+                metadata = user_data[key]
+                for mkey, mval in metadata.items():
+                    try:
+                        if not hasattr(user_instance, mkey) or override_existing:
+                            setattr(user_instance, mkey, mval)
+                    except Exception:
+                        logging.info("Could set attribute {} for user".format(mkey))
+            else:
+                try:    
+                    if not hasattr(user_instance, key) or override_existing:
+                        setattr(user_instance, key, val)
+                except Exception:            
+                    logging.info("Could set attribute {} for user".format(mkey))
+        return user_instance
