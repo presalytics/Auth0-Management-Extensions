@@ -29,10 +29,8 @@ class UserManager(AdminTokenMgr):
             for key in self.IDENTIFIER_FIELDS:
                 dct.pop(key, None)
         self.auth0.users.update(user_id, dct)
-
     
-    def assign_user_data_via_email(user_instance, email, override_existing=False):
-        user_data = self.get_user_by_email(email)
+    def assign_user_data(user_instance, user_data, override_existing=False):
         for key, val in user_data.items():
             if key == "user_metadata" or key == "app_metadata":
                 metadata = user_data[key]

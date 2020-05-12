@@ -12,7 +12,7 @@ class AdminTokenMgr(object):
         self.client_secret = client_secret if client_secret else env.str('AUTH0_CLIENT_SECRET')
 
         self.get_token = GetToken(self.domain)
-        self.token_data = self.get_token.client_credentials(self.client_id, self.client_secret,'https://{}/api/v2/'.format(self.domain))
+        self.token_data = self.get_token.client_credentials(self.client_id, self.client_secret,'https://{}/'.format(self.domain))
         self.mgmt_access_token = self.token_data['access_token']
 
         self.auth0 = Auth0(self.domain, self.mgmt_access_token)
