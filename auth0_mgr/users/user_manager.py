@@ -30,6 +30,7 @@ class UserManager(AdminTokenMgr):
                 dct.pop(key, None)
         self.auth0.users.update(user_id, dct)
     
+    @staticmethod
     def assign_user_data(user_instance, user_data, override_existing=False):
         for key, val in user_data.items():
             if key == "user_metadata" or key == "app_metadata":
