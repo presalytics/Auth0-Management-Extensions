@@ -174,7 +174,12 @@ class Auth0User(Base):
     # note: passowrd is api-updatable, but was deliberately omitted from this client
 
     APP_METADATA_KEYS = [
-        'api_user_id'
+        'api_user_id',
+        'roles',
+        'privacy_policy_version',
+        'terms_of_use_version',
+        'permissions',
+        'user_permissions'
     ]
 
     def __init__(self,

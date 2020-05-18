@@ -48,3 +48,7 @@ class UserManager(AdminTokenMgr):
                 except Exception:            
                     logging.info("Could set attribute {} for user".format(mkey))
         return user_instance
+
+
+
+
