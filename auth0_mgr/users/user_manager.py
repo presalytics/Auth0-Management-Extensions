@@ -49,6 +49,14 @@ class UserManager(AdminTokenMgr):
                     logging.info("Could set attribute {} for user".format(mkey))
         return user_instance
 
+    def send_verification_email(self, user):
+        user_id = user["user_id"]
+        payload = {
+            "user_id": user_id,
+            "client_id": self.client_id
+        }
+        self.auth0.jobs.send_verification_email(payload)
+
 
 
 
