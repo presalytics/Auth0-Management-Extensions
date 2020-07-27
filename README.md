@@ -5,5 +5,5 @@ Extensions for the Auth0 Management API.  Includes utilties updating users and b
 install via pip:
 
 ~~~~python
-pip install -U git+https://github.com/presalytics/Auth0-Management-Extensions
+pip install presalytics-auth0-management-extensions
 ~~~~

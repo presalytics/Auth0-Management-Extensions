@@ -1,8 +1,8 @@
 # coding: utf-8
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "auth0-management-extensions"
-VERSION = "0.1.0"
+NAME = "presalytics-auth0-management-extensions"
+VERSION = "0.1.1"
 
 # To install the library, run the following
 #
@@ -29,7 +29,7 @@ setup(
     keywords=["Presalytics", "Auth0"],
     install_requires=REQUIRES,
     packages=find_packages(),
-    include_package_data=True,
+    include_package_data=True,    
     long_description_content_type="text/markdown",
     long_description=long_description,
 

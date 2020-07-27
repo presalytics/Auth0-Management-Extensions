@@ -6,13 +6,16 @@ env = Env()
 env.read_env()
 
 class AdminTokenMgr(object):
-    def __init__(self, domain=None, client_id=None, client_secret=None, *args, **kwargs):
+    def __init__(self, domain=None, client_id=None, client_secret=None, token_data=None, *args, **kwargs):
+        auth0: Auth0
         self.domain = domain if domain else env.str('AUTH0_DOMAIN', None)
         self.client_id = client_id if client_id else env.str('AUTH0_CLIENT_ID', None)
         self.client_secret = client_secret if client_secret else env.str('AUTH0_CLIENT_SECRET')
-
         self.get_token = GetToken(self.domain)
-        self.token_data = self.get_token.client_credentials(self.client_id, self.client_secret,'https://{}/api/v2/'.format(self.domain))
+        if token_data:
+            self.token_data = token_data
+        else:
+            self.token_data = self.get_token.client_credentials(self.client_id, self.client_secret,'https://{}/api/v2/'.format(self.domain))
         self.mgmt_access_token = self.token_data['access_token']
 
         self.auth0 = Auth0(self.domain, self.mgmt_access_token)

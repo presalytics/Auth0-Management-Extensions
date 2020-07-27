@@ -438,3 +438,4 @@ story.json
 config.py
 users.json
 keycloakdb.json
+logs.json
