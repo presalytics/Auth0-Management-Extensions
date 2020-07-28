@@ -28,7 +28,7 @@ class UserManager(AdminTokenMgr):
         if not update_identifiers:
             for key in self.IDENTIFIER_FIELDS:
                 dct.pop(key, None)
-        self.auth0.users.update(user_id, dct)
+        return self.auth0.users.update(user_id, dct)
     
     @staticmethod
     def assign_user_data(user_instance, user_data, override_existing=False):
