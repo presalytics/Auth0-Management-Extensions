@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "presalytics-auth0-management-extensions"
-VERSION = "0.1.1"
+VERSION = "0.1.4"
 
 # To install the library, run the following
 #

@@ -179,7 +179,8 @@ class Auth0User(Base):
         'privacy_policy_version',
         'terms_of_use_version',
         'permissions',
-        'user_permissions'
+        'user_permissions',
+        'stripe_customer_id'
     ]
 
     def __init__(self,
@@ -261,3 +262,4 @@ class Auth0User(Base):
                 self.app_metadata.update({key: val})
             else:
                 self.user_metadata.update({key: val})
+    
